@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs/WebApiDemo/v15/Server/sqlite3/storage.ide-wal
+/.vs/WebApiDemo/v15/Server/sqlite3/storage.ide-shm
+/.vs/WebApiDemo/v15/Server/sqlite3/storage.ide
+/.vs/WebApiDemo/v15/Server/sqlite3/db.lock
