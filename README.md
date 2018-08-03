@@ -1,6 +1,6 @@
-# GenericCrudAspCore
+# Generic Crud Asp Core
 
-Generic Repository
+Generic Repository Pattern
 
 Unit of Work Pattern
 
