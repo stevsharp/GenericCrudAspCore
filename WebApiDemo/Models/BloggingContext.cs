@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using WebApiDemo.Logging;
 
 namespace WebApiDemo.Models
 {
@@ -15,11 +16,16 @@ namespace WebApiDemo.Models
 
         protected readonly ILogger _logger;
 
-        public BloggingContext(DbContextOptions<BloggingContext> options, ILoggerFactory loggerFactory , ILogger logger)
+        protected readonly ILoggerProvider _loggerProvider;
+
+        public BloggingContext(DbContextOptions<BloggingContext> options, ILoggerFactory loggerFactory ,
+            ILogger logger , 
+            ILoggerProvider loggerProvider)
             : base(options)
         {
 
             _loggerFactory = loggerFactory;
+            _loggerProvider  = loggerProvider;
             _logger = logger;
         }
 
@@ -44,8 +50,8 @@ namespace WebApiDemo.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            //_loggerFactory.AddProvider(_loggerFactory);
-            //optionsBuilder.UseLoggerFactory(_loggerFactory);
+            _loggerFactory.AddProvider(_loggerProvider);
+            optionsBuilder.UseLoggerFactory(_loggerFactory);
 
             optionsBuilder.EnableSensitiveDataLogging();
         }

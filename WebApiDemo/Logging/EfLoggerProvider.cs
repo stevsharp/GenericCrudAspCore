@@ -9,9 +9,16 @@ namespace WebApiDemo.Logging
 {
     public class EfLoggerProvider : ILoggerProvider
     {
+
+        private readonly ILogger _ILogger;
+        public EfLoggerProvider(ILogger Logger)
+        {
+            _ILogger = Logger;
+        }
+
         public ILogger CreateLogger(string categoryName)
         {
-            throw new NotImplementedException();
+            return _ILogger;
         }
 
         public void Dispose()
@@ -29,7 +36,7 @@ namespace WebApiDemo.Logging
 
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
-            File.AppendAllText(@"C:\temp\log.txt", formatter(state, exception));
+            //File.AppendAllText(@"C:\temp\log.txt", formatter(state, exception));
             Console.WriteLine(formatter(state, exception));
         }
 

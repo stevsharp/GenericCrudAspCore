@@ -33,13 +33,15 @@ namespace WebApiDemo
             var connection = @"Server=DESKTOP-70L3KQ7;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<BloggingContext>(options => options.UseSqlServer(connection));
 
- 
+
+            //services.AddTransient<ILoggerProvider, EfLoggerProvider>();
+            //services.AddTransient<ILogger, EfLogger>();
+
+
             services.AddScoped<IDbContext, BloggingContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            services.AddScoped<ILoggerProvider, EfLoggerProvider>();
-            services.AddScoped<ILogger, EfLogger>();
 
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
