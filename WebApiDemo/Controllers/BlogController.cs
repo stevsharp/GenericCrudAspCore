@@ -34,6 +34,7 @@ namespace WebApiDemo.Controllers
                     .Query()
                     .Filter(x=>x.BlogId > 1)
                     .Get()
+                    .OrderBy(x=>x.BlogId)
                     .ToList();
         }
 

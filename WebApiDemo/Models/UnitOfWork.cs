@@ -3,14 +3,6 @@ using System.Collections;
 
 namespace WebApiDemo.Models
 {
-    public interface IUnitOfWork
-    {
-        string ConnectionString { get; }
-        void Dispose();
-        void Save();
-        void Dispose(bool disposing);
-        IRepository<T> Repository<T>() where T : class;
-    }
 
     public class UnitOfWork : IUnitOfWork
     {

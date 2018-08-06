@@ -25,3 +25,4 @@ C:\Users\Spyros\source\repos\GenericCrudAspCore\WebApiDemo\obj\Debug\netcoreapp2
 C:\Users\Spyros\source\repos\GenericCrudAspCore\WebApiDemo\obj\Debug\netcoreapp2.1\WebApiDemo.RazorTargetAssemblyInfo.cache
 C:\Users\Spyros\source\repos\GenericCrudAspCore\WebApiDemo\obj\Debug\netcoreapp2.1\WebApiDemo.dll
 C:\Users\Spyros\source\repos\GenericCrudAspCore\WebApiDemo\obj\Debug\netcoreapp2.1\WebApiDemo.pdb
+C:\Users\Spyros\source\repos\GenericCrudAspCore\WebApiDemo\obj\Debug\netcoreapp2.1\WebApiDemo.csprojAssemblyReference.cache
