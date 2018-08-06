@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WebApiDemo.Logging;
 using WebApiDemo.Models;
 
 namespace WebApiDemo
@@ -36,6 +37,10 @@ namespace WebApiDemo
             services.AddScoped<IDbContext, BloggingContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<ILoggerProvider, EfLoggerProvider>();
+            services.AddScoped<ILogger, EfLogger>();
+
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
         }

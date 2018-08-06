@@ -4,15 +4,24 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace WebApiDemo.Models
 {
 
     public class BloggingContext : DbContext , IDbContext
     {
-        public BloggingContext(DbContextOptions<BloggingContext> options)
+        protected readonly ILoggerFactory _loggerFactory;
+
+        protected readonly ILogger _logger;
+
+        public BloggingContext(DbContextOptions<BloggingContext> options, ILoggerFactory loggerFactory , ILogger logger)
             : base(options)
-        { }
+        {
+
+            _loggerFactory = loggerFactory;
+            _logger = logger;
+        }
 
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
@@ -28,6 +37,18 @@ namespace WebApiDemo.Models
         /// </summary>
         public DateTime UserProvider { get; private set; }
         private Func<DateTime> TimestampProvider { get; set; } = () => DateTime.Now;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="optionsBuilder"></param>
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+
+            //_loggerFactory.AddProvider(_loggerFactory);
+            //optionsBuilder.UseLoggerFactory(_loggerFactory);
+
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
         /// <summary>
         /// 
         /// </summary>
