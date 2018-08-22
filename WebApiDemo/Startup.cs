@@ -42,7 +42,11 @@ namespace WebApiDemo
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            //services.AddScoped(typeof(ICommand<>), typeof(Internal1<>));
+            //services.AddScoped(typeof(ICommand<>), typeof(Internal2<>));
 
+            services.AddScoped(typeof(Internal1<>));
+            services.AddScoped(typeof(Internal2<>));
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
         }

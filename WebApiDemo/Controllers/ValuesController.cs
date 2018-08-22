@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebApiDemo.Models;
 
 namespace WebApiDemo.Controllers
 {
@@ -10,10 +11,32 @@ namespace WebApiDemo.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        //private readonly ICommand<object> Command1;
+        //private readonly ICommand<object> Command2;
+
+        private readonly Internal1<object> Command1;
+        private readonly Internal2<object> Command2;
+
+        //public ValuesController(ICommand<object> command1 , ICommand<object> command2)
+        //{
+        //    Command1 = command1;
+        //    Command2 = command2;
+        //}
+
+        public ValuesController(Internal1<object> command1, Internal2<object> command2)
+        {
+            Command1 = command1;
+            Command2 = command2;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+
+            Command1.Run();
+            Command2.Run();
+
             return new string[] { "value1", "value2" };
         }
 
